@@ -26,41 +26,72 @@ let peliculas=[
         poster:"https://firebasestorage.googleapis.com/v0/b/personalsoft-a1bec.appspot.com/o/wakanda.jpg?alt=media&token=5716b762-e877-4512-99ce-4e09cce7f690"
     },
     {
-        nombre: "Wakanda forever",
+        nombre: "Los reyes del mundo",
         duracion:95,
-        poster:"https://firebasestorage.googleapis.com/v0/b/personalsoft-a1bec.appspot.com/o/wakanda.jpg?alt=media&token=5716b762-e877-4512-99ce-4e09cce7f690"
+        poster:"https://firebasestorage.googleapis.com/v0/b/cinemacristian-4c96b.appspot.com/o/LOS%20REYES%20DEL%20MUNDO1.jpg?alt=media&token=bd8c16f5-b51d-48b2-921e-3199ce7e9ef4"
     },
     {
-        nombre: "Wakanda forever",
-        duracion:95,
-        poster:"https://firebasestorage.googleapis.com/v0/b/personalsoft-a1bec.appspot.com/o/wakanda.jpg?alt=media&token=5716b762-e877-4512-99ce-4e09cce7f690"
+        nombre: "Quantumania",
+        duracion:125,
+        poster:"https://firebasestorage.googleapis.com/v0/b/cinemacristian-4c96b.appspot.com/o/QUANTUMANIA1.jpg?alt=media&token=7db61d12-f9aa-4832-b138-120c8a7c6ce0"
     },
     {
-        nombre: "Wakanda forever",
-        duracion:95,
-        poster:"https://firebasestorage.googleapis.com/v0/b/personalsoft-a1bec.appspot.com/o/wakanda.jpg?alt=media&token=5716b762-e877-4512-99ce-4e09cce7f690"
+        nombre: "Super Mascotas",
+        duracion:110,
+        poster:"https://firebasestorage.googleapis.com/v0/b/cinemacristian-4c96b.appspot.com/o/SUPERMASCOTASNUEVO.jpg?alt=media&token=400f6053-e290-41b8-aa28-7f2660e1e967"
     },
     {
-        nombre: "Wakanda forever",
-        duracion:95,
-        poster:"https://firebasestorage.googleapis.com/v0/b/personalsoft-a1bec.appspot.com/o/wakanda.jpg?alt=media&token=5716b762-e877-4512-99ce-4e09cce7f690"
+        nombre: "La llorona",
+        duracion:75,
+        poster:"https://firebasestorage.googleapis.com/v0/b/cinemacristian-4c96b.appspot.com/o/LA%20LEYENDA%20DE%20LA%20LLORONA.jpg?alt=media&token=c1a5301d-affe-4b99-a976-b5019878985f"
     },
     {
-        nombre: "Wakanda forever",
-        duracion:95,
-        poster:"https://firebasestorage.googleapis.com/v0/b/personalsoft-a1bec.appspot.com/o/wakanda.jpg?alt=media&token=5716b762-e877-4512-99ce-4e09cce7f690"
+        nombre: "La noche del apocalipsis",
+        duracion:135,
+        poster:"https://firebasestorage.googleapis.com/v0/b/cinemacristian-4c96b.appspot.com/o/LA%20NOCHE%20DEL%20APOCALIPSIS1.jpg?alt=media&token=a4a73f19-da64-4129-a697-4331d531dba3"
     }
 ]
 
-let fila=document.getElementById("fila")
+//creamos una referencia al espacio html donde queremos 
+//hacer el render (PINTAR ETIQUETAS)
+
+let etiquetafila=document.getElementById("fila")
+
+//SI YA TENGO DATOS QUE NORMALMENTE LLEGAN AL FRONT 
+//COMO UN ARREGLO DE OBJETOS DEBEMOS RECORRER Y DEPURAR
+//DICHA INFORMACION
 
 peliculas.forEach(function(pelicula){
-    console.log(pelicula.poster)
+    //para pintar la informacion de cada pelicula debemos
+    //aplicar una tecnica conocida como traversing
+    //TRAVERSING== CREAR ETIQUETAS DE HTML DESDE JS 
+    let columna=document.createElement("div")
+    columna.classList.add("col")
 
-    let foto=document.createElement("img")
-    foto.src=pelicula.poster
-    foto.classList.add("img-fluid","w-100")
+    let tarjeta=document.createElement("div")
+    tarjeta.classList.add("card","h-100","shadow")
 
-    fila.appendChild(foto)
+    let poster=document.createElement("img")
+    poster.classList.add("img-fluid","w-100")
+    poster.src=pelicula.poster
+
+    let nombre=document.createElement("h3")
+    nombre.classList.add("text-center","fw-bold")
+    nombre.textContent=pelicula.nombre
+
+    let duracion=document.createElement("h5")
+    duracion.classList.add("text-start","fw-bold")
+    duracion.textContent="Duracion:"+ pelicula.duracion+" Min"
+
+
+    //padres  e hijos
+    etiquetafila.appendChild(columna)
+    columna.appendChild(tarjeta)
+    tarjeta.appendChild(poster)
+    tarjeta.appendChild(nombre)
+    tarjeta.appendChild(duracion)
+    
+    
+    
 
 })
